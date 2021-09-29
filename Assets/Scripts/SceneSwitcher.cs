@@ -1,0 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class SceneSwitcher : MonoBehaviour
+{
+    public int targetSceneIndex = 0;
+
+    public void ChangeScene() {
+        SceneManager.LoadScene(targetSceneIndex);
+    }
+}

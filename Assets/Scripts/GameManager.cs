@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public int health = 0;
     public int startingHealth = 3;
 
+    public UIController ui;
+
     void Start(){ 
         health = startingHealth;
         ChangeHealth();
@@ -19,7 +21,14 @@ public class GameManager : MonoBehaviour
 
     public void ChangeHealth(int amount = -1) {
         health += amount;
+        ui.UpdateHealthUI(health);
+
         if(health <= 0) {
+            // save the current score
+            PlayerPrefs.SetInt("score", score);
+            // load the "gameover" scene
+            UnityEngine.SceneManagement.SceneManager.LoadScene("gameover");
+
             // game is over!
             // go to end screen
             // show score and button to go to main menu.
@@ -29,5 +38,6 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScore(int givenAmount = 1) {
         score += givenAmount;
+        ui.UpdateScoreUI(score);
     }
 }
