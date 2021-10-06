@@ -36,8 +36,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool specialScoreIsActive = false;
+
     public void ChangeScore(int givenAmount = 1) {
-        score += givenAmount;
+        if(specialScoreIsActive) {
+            score += givenAmount * 10;
+        } else {
+            score += givenAmount;
+        }
         ui.UpdateScoreUI(score);
+    }
+
+    public void StartSpecial() {
+        StartCoroutine(SpecialTimer());
+    }
+
+    // can we get the button to call this function?
+    public IEnumerator SpecialTimer() {
+        specialScoreIsActive = true;
+        yield return new WaitForSeconds(5);
+        specialScoreIsActive = false;
     }
 }

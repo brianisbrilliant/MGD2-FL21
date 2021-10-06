@@ -16,6 +16,7 @@ public class IconSplash : MonoBehaviour
     public void ShowIcon(imageTypes type, Vector3 location) {
         Debug.Log("showing a sprite at " + location);
         GameObject icon = Instantiate(icons[(int)type], location, Quaternion.identity);
+        Debug.LogError("Showing Icon! Go find it.", icon);
         icon.transform.SetParent(canvas);
         icon.transform.localScale += Vector3.one * Random.Range(10f,20f);
         icon.transform.Rotate(0,0,Random.Range(-15f,15f));

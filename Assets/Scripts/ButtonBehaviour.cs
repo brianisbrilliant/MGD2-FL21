@@ -34,6 +34,9 @@ public class ButtonBehaviour : MonoBehaviour
             audioManager.PlayClip(soundType.Hurt);
             iconManager.ShowIcon(imageTypes.Hurt, this.transform.position);
         }
+        else {
+            // play good guy escaping sound
+        }
         Destroy(this.gameObject);
     }
 
